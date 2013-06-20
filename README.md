@@ -18,4 +18,4 @@ The slave machine has:
 
 The master is also configured to have multiple interfaces and runs different instances of Beanstalk for each assigned IP. 
 
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/445f9c08b8e67fe45b005b41088b6b35 "githalytics.com")](http://githalytics.com/github.com/mmohiudd)
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/071775b49d27bb9fa61b6350b51a56bb "githalytics.com")](http://githalytics.com/mmohiudd/vagrant-mvm-1)

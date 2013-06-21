@@ -16,21 +16,20 @@ exec {
 }
 
 file { 
-	'/etc/supervisor/conf.d/supervisord-beanstalkd.conf':
+	'/etc/supervisord.conf':
 		ensure => file,
-		source => '/vagrant/provision/files/supervisord-beanstalkd.conf',
+		source => '/vagrant/provision/files/supervisord.conf',
 		require => Exec['install supervisor'];
+    
+    '/etc/init/supervisor.conf':
+        ensure => file,
+        source => '/vagrant/provision/files/supervisor.conf',
+        require => File['/etc/supervisord.conf'];
 } 
 
 service { 
-	"supervisor stop":
-		ensure => stopped,
-		notify => Service['supervisor start'];
-
-	"supervisor start":
+	"supervisor":
 		ensure => running,
-		require => [
-			Exec['beanstalkd stop'], 
-			File['/etc/supervisor/conf.d/supervisord-beanstalkd.conf']
-		];
+		require => File['/etc/supervisord.conf', '/etc/init/supervisor.conf'];
+
 }

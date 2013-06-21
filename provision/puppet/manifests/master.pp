@@ -2,7 +2,7 @@ import 'default.pp'
 
 exec { 
 	'install beanstalkd':
-    	command => '/usr/bin/apt-get -y install beanstalkd',
+    	command => 'apt-get -y install beanstalkd',
     	require => Exec['apt-get update'];
 
 	# make sure beanstalkd is stopped - we will start it via supervisor
@@ -11,7 +11,7 @@ exec {
 		require => Exec['install beanstalkd'];
 
 	'install supervisor':
-    	command => '/usr/bin/easy_install supervisor',
+    	command => 'easy_install supervisor',
     	require => Exec['install python-setuptools'];
 }
 

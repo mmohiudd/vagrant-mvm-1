@@ -2,21 +2,24 @@ group { 'puppet':
     ensure => present,
 }
 
+# default path value in the global scope
+Exec { path => '/usr/bin:/bin:/usr/sbin:/sbin' }
+
 exec { 
     'apt-get update': 
-        command => '/usr/bin/apt-get update';
+        command => 'apt-get update';
 
     'install gcc build-essential':
-        command => '/usr/bin/apt-get -y install gcc build-essential';
+        command => 'apt-get -y install gcc build-essential';
 
     'install python-pip':
-        command => '/usr/bin/apt-get -y install python-pip';
+        command => 'apt-get -y install python-pip';
 
     'install python-dev':
-        command => '/usr/bin/apt-get -y install python-dev';
+        command => 'apt-get -y install python-dev';
 
     'install python-setuptools':
-        command => '/usr/bin/apt-get -y install python-setuptools';
+        command => 'apt-get -y install python-setuptools';
 
     'update hosts':
         command => '/vagrant/provision/shell/network.sh',
